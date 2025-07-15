@@ -43,6 +43,12 @@ namespace negocio
             }
         }
 
+        public void setearProcedimiento(string SP)
+        {
+            comando.CommandType = System.Data.CommandType.StoredProcedure;
+            comando.CommandText = SP;
+        }
+
         public void ejecutarAccion()
         {
             comando.Connection = conexion;
