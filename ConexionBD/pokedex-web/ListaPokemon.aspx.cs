@@ -17,5 +17,21 @@ namespace pokedex_web
             dgvPokemons.DataBind();
 
         }
+
+
+        // Esto es para la seleccion del pokemon de la grilla y capturar su ID llevandolo al la pagina formnulario.
+        protected void dgvPokemons_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvPokemons.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioPokemon.aspx?id=" + id);
+        }
+
+
+        //Esto es para el paginado, captura el newpage y lo asigna como page, 
+        protected void dgvPokemons_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvPokemons.PageIndex = e.NewPageIndex;
+            dgvPokemons.DataBind();
+        }
     }
 }

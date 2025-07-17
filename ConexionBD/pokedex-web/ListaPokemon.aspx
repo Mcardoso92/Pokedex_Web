@@ -3,16 +3,19 @@
     <h1>Mi lista pokemon</h1>
     <div class="row">
         <div class="col">
-            <asp:GridView ID="dgvPokemons" runat="server" CssClass="table" HeaderStyle-CssClass="table-dark" AutoGenerateColumns="false">
+            <asp:GridView ID="dgvPokemons" runat="server" DataKeyNames="ID"
+                CssClass="table" HeaderStyle-CssClass="table-dark" AutoGenerateColumns="false"
+                OnSelectedIndexChanged="dgvPokemons_SelectedIndexChanged"
+                OnPageIndexChanging="dgvPokemons_PageIndexChanging"
+                AllowPaging="true" PageSize="5">
                 <Columns>
                     <asp:BoundField HeaderText="Numero" DataField="Numero" />
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                    <asp:BoundField HeaderText="Imagen" DataField="UrlImagen" />
                     <asp:BoundField HeaderText="Tipo" DataField="Tipo.Descripcion" />
-                    <asp:BoundField HeaderText="Debilidad" DataField="Tipo.Descripcion" />
+                    <asp:CommandField ShowSelectButton="true"  HeaderText="Accion" SelectText="🧐︎" />
                 </Columns>
             </asp:GridView>
+            <a href="FormularioPokemon.aspx" class="btn btn-outline-primary">Agregar</a>
         </div>
     </div>
     

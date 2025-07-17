@@ -69,6 +69,12 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="DetallePokemon.aspx" />
+    <Content Include="EjemploConDropDowns\DropDownlistEnlazados.aspx" />
+    <Content Include="EjemploConDropDowns\DropDownlistEnlazadosUpdatePanel.aspx" />
+    <Content Include="EjemploConDropDowns\DropDownlistSeleccionarElemento.aspx" />
+    <Content Include="EjemploConDropDowns\DropDownsEjemplos.aspx" />
+    <Content Include="EjemploConDropDowns\UpdatePanel.aspx" />
+    <Content Include="FormularioPokemon.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ListaPokemon.aspx" />
     <Content Include="Web.config" />
@@ -87,6 +93,48 @@
     </Compile>
     <Compile Include="DetallePokemon.aspx.designer.cs">
       <DependentUpon>DetallePokemon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\DropDownlistEnlazados.aspx.cs">
+      <DependentUpon>DropDownlistEnlazados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\DropDownlistEnlazados.aspx.designer.cs">
+      <DependentUpon>DropDownlistEnlazados.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\DropDownlistEnlazadosUpdatePanel.aspx.cs">
+      <DependentUpon>DropDownlistEnlazadosUpdatePanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\DropDownlistEnlazadosUpdatePanel.aspx.designer.cs">
+      <DependentUpon>DropDownlistEnlazadosUpdatePanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\DropDownlistSeleccionarElemento.aspx.cs">
+      <DependentUpon>DropDownlistSeleccionarElemento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\DropDownlistSeleccionarElemento.aspx.designer.cs">
+      <DependentUpon>DropDownlistSeleccionarElemento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\DropDownsEjemplos.aspx.cs">
+      <DependentUpon>DropDownsEjemplos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\DropDownsEjemplos.aspx.designer.cs">
+      <DependentUpon>DropDownsEjemplos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\UpdatePanel.aspx.cs">
+      <DependentUpon>UpdatePanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\UpdatePanel.aspx.designer.cs">
+      <DependentUpon>UpdatePanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioPokemon.aspx.cs">
+      <DependentUpon>FormularioPokemon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FormularioPokemon.aspx.designer.cs">
+      <DependentUpon>FormularioPokemon.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
