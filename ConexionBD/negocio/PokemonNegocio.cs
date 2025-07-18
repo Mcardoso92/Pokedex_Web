@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using dominio;
 using System.Security.Authentication.ExtendedProtection;
 using System.Net;
+using System.Security.Cryptography;
 
 namespace negocio
 {
@@ -110,6 +111,40 @@ namespace negocio
                 datos.setearParametro("@idTipo", nuevo.Tipo.ID);
                 datos.setearParametro("@idDebilidad", nuevo.Debilidad.ID);
                 datos.setearParametro("@urlImagen", nuevo.UrlImagen);
+                datos.ejecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
+
+        public void agregarConSP(Pokemon nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+//                @numero int,
+//@nombre varchar(50),
+//@desc varchar(50),
+//@img varchar(300),
+//@idTipo int,
+//@idDebilidad int,
+//@idEvolucion int
+                datos.setearProcedimiento("storeAltaPokemon");
+                datos.setearParametro("@numero", nuevo.Numero);
+                datos.setearParametro("@nombre", nuevo.Nombre);
+                datos.setearParametro("@desc", nuevo.Descripcion);
+                datos.setearParametro("@img", nuevo.UrlImagen);
+                datos.setearParametro("@idTipo", nuevo.Tipo.ID);
+                datos.setearParametro("@idDebilidad", nuevo.Debilidad.ID);
+                //datos.setearParametro("@idEvolucion", null);
                 datos.ejecutarAccion();
             }
             catch (Exception ex)

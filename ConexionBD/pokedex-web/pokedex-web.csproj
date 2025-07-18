@@ -67,12 +67,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\MisEstilos.css" />
     <Content Include="Default.aspx" />
     <Content Include="DetallePokemon.aspx" />
     <Content Include="EjemploConDropDowns\DropDownlistEnlazados.aspx" />
     <Content Include="EjemploConDropDowns\DropDownlistEnlazadosUpdatePanel.aspx" />
     <Content Include="EjemploConDropDowns\DropDownlistSeleccionarElemento.aspx" />
     <Content Include="EjemploConDropDowns\DropDownsEjemplos.aspx" />
+    <Content Include="EjemploConDropDowns\ResolverURLImagenSinRecargar.aspx" />
     <Content Include="EjemploConDropDowns\UpdatePanel.aspx" />
     <Content Include="FormularioPokemon.aspx" />
     <Content Include="Global.asax" />
@@ -122,6 +124,13 @@
     <Compile Include="EjemploConDropDowns\DropDownsEjemplos.aspx.designer.cs">
       <DependentUpon>DropDownsEjemplos.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EjemploConDropDowns\ResolverURLImagenSinRecargar.aspx.cs">
+      <DependentUpon>ResolverURLImagenSinRecargar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EjemploConDropDowns\ResolverURLImagenSinRecargar.aspx.designer.cs">
+      <DependentUpon>ResolverURLImagenSinRecargar.aspx</DependentUpon>
+    </Compile>
     <Compile Include="EjemploConDropDowns\UpdatePanel.aspx.cs">
       <DependentUpon>UpdatePanel.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,7 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\" />
     <Folder Include="Models\" />
     <Folder Include="Scripts\" />
   </ItemGroup>

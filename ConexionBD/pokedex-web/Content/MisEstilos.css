@@ -1,0 +1,36 @@
+﻿
+.pagination-container{
+    display: flex;
+    justify-content: center;
+    margin-top: 0rem 0;
+}
+
+.pagination-container table {
+    margin: auto;
+}
+
+.pagination-container td {
+    padding: 0.30rem;
+    border: none;
+}
+
+.pagination-container a {
+    color: #0d6efd;
+    padding: 6px 12px;
+    border: 1px solid #dee2e6;
+    margin: 0 2px;
+    border-radius: 0.25rem;
+    text-decoration: none;
+}
+
+    .pagination-container a:hover {
+        background-color: #e9ecef;
+    }
+
+.pagination-container span {
+    padding: 6px 12px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 0.25rem;
+    margin: 0 2px;
+}
