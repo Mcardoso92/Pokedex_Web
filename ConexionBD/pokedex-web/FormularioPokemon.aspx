@@ -50,6 +50,7 @@
                 <div class="mb-3">
                     <asp:Button ID="btnAceptar" Text="Aceptar" CssClass="btn btn-primary" runat="server" OnClick="btnAceptar_Click" />
                     <asp:Button ID="btnModificar" Text="Modificar" CssClass="btn btn-primary" runat="server" OnClick="btnModificar_Click" />
+                    <asp:Button ID="btnInhabilitar" Text="Inhabilitar" CssClass="btn btn-warning" runat="server" OnClick="btnInhabilitar_Click" />
                     <asp:Button ID="btnEliminar" Text="Eliminar" CssClass="btn btn-danger" runat="server" OnClick="btnEliminar_Click" />
                     <a href="ListaPokemon.aspx" class="btn btn-primary">Cancelar</a>
                 </div>

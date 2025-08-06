@@ -48,6 +48,11 @@ namespace pokedex_web
 
                     //2da Forma
                     Pokemon selecccionado = (negocio.listar(id))[0];
+
+                    //Guardo el pokemon seleccionado en la session
+
+                    Session.Add("pokeSeleccionado", selecccionado);
+
                     //Precargar todos los campos del pokemon seleccionado...
                     txtID.Text = id;
                     txtNumero.Text = selecccionado.Numero.ToString();
@@ -61,6 +66,12 @@ namespace pokedex_web
                     txtImagenUrl_TextChanged(sender, e); //Forzamos para carga de la imagen (hacerlo como metodo mas a delante)
 
                     btnAceptar.Enabled = false;
+
+                    //Configurar Acciones
+                    if (!selecccionado.Activo)
+                        btnInhabilitar.Text = "Habilitar";
+
+
                 }
                 else
                 {
@@ -73,7 +84,6 @@ namespace pokedex_web
             {
 
                 Session.Add("Error", ex);
-                throw;
                 //redireccion a pantalla de error
             }
         }
@@ -161,6 +171,23 @@ namespace pokedex_web
             }
             catch (Exception ex)
             {
+                Session.Add("error", ex);
+            }
+        }
+
+        protected void btnInhabilitar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PokemonNegocio negocio = new PokemonNegocio();
+                Pokemon seleccionado = (Pokemon)Session["pokeSeleccionado"];
+
+                negocio.eliminarLogico(seleccionado.ID, !seleccionado.Activo);
+                Response.Redirect("ListaPokemon.aspx");
+            }
+            catch (Exception ex)
+            {
+
                 Session.Add("error", ex);
             }
         }
