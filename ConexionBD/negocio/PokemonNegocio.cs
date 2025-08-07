@@ -1,19 +1,13 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
-using dominio;
-using System.Security.Authentication.ExtendedProtection;
-using System.Net;
-using System.Security.Cryptography;
 
 namespace negocio
 {
     public class PokemonNegocio
     {
-        public List<Pokemon> listar(string id ="") //Al escribirlo asi es opcional el argumento
+        public List<Pokemon> listar(string id = "") //Al escribirlo asi es opcional el argumento
         {
             List<Pokemon> lista = new List<Pokemon>(); //Crea una lista de Objetos tipo pokemon y lo instancia
             SqlConnection conexion = new SqlConnection();
@@ -66,7 +60,8 @@ namespace negocio
             }
         }
 
-        public List<Pokemon> listarConSP(){
+        public List<Pokemon> listarConSP()
+        {
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
             try
@@ -113,7 +108,7 @@ namespace negocio
 
             try
             {
-                datos.setearConsulta("insert into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen)values("+nuevo.Numero + ",'"+ nuevo.Nombre +"','" + nuevo.Descripcion + "',1,@idTipo,@idDebilidad,@urlImagen)");
+                datos.setearConsulta("insert into POKEMONS (Numero, Nombre, Descripcion, Activo, IdTipo, IdDebilidad, UrlImagen)values(" + nuevo.Numero + ",'" + nuevo.Nombre + "','" + nuevo.Descripcion + "',1,@idTipo,@idDebilidad,@urlImagen)");
                 datos.setearParametro("@idTipo", nuevo.Tipo.ID);
                 datos.setearParametro("@idDebilidad", nuevo.Debilidad.ID);
                 datos.setearParametro("@urlImagen", nuevo.UrlImagen);
@@ -245,14 +240,14 @@ namespace negocio
             }
         }
 
-        public List<Pokemon> filtrar(string campo, string criterio, string filtro)
+        public List<Pokemon> filtrar(string campo, string criterio, string filtro, string estado)
         {
             List<Pokemon> lista = new List<Pokemon>();
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, e.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E , ELEMENTOS D where E.Id = P.IdTipo and D.Id = P.IdDebilidad and P.Activo = 1 and ";
-                if(campo == "Numero")
+                string consulta = "Select Numero, Nombre, P.Descripcion, UrlImagen, e.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id, P.Activo From POKEMONS P, ELEMENTOS E , ELEMENTOS D where E.Id = P.IdTipo and D.Id = P.IdDebilidad and ";
+                if (campo == "Número")
                 {
                     switch (criterio)
                     {
@@ -267,7 +262,7 @@ namespace negocio
                             break;
                     }
                 }
-                else if(campo  == "Nombre")
+                else if (campo == "Nombre")
                 {
                     switch (criterio)
                     {
@@ -276,7 +271,7 @@ namespace negocio
                             break;
                         case "Termina con":
                             consulta += "Nombre like '%" + filtro + "'";
-                                break;
+                            break;
                         default:
                             consulta += "Nombre like '%" + filtro + "%'";
                             break;
@@ -287,16 +282,21 @@ namespace negocio
                     switch (criterio)
                     {
                         case "Comienza con":
-                            consulta += "P.Descripcion like '" + filtro + "%' ";
+                            consulta += "E.Descripcion like '" + filtro + "%' ";
                             break;
                         case "Termina con":
-                            consulta += "P.Descripcion like '%" + filtro + "'";
+                            consulta += "E.Descripcion like '%" + filtro + "'";
                             break;
                         default:
-                            consulta += "P.Descripcion like '%" + filtro + "%'";
+                            consulta += "E.Descripcion like '%" + filtro + "%'";
                             break;
                     }
                 }
+
+                if (estado == "Activo")
+                    consulta += "and P.Activo = 1";
+                else if (estado == "Inactivo")
+                    consulta += " and P.Activo = 0";
 
                 datos.setearConsulta(consulta);
                 datos.ejecutarLectura();
@@ -318,6 +318,8 @@ namespace negocio
                     aux.Debilidad.ID = (int)datos.Lector["IdDebilidad"];
                     aux.Debilidad.Descripcion = (string)datos.Lector["Debilidad"];
 
+                    aux.Activo = bool.Parse(datos.Lector["Activo"].ToString());
+
                     lista.Add(aux);
                 }
 
@@ -325,7 +327,6 @@ namespace negocio
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -333,6 +334,6 @@ namespace negocio
 
     }
 
-    
+
 
 }

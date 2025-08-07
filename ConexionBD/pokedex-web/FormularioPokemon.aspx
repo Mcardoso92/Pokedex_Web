@@ -56,8 +56,8 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center ">
-                <%if (confirmaEliminacion)
-                    { %>
+                <%if(confirmaEliminacion)
+                  {%>
                 <div class="mb-3">
                     <asp:CheckBox Text="Confirmar Eliminacion" ID="chkConfirmaEliminacion" runat="server" />
                     <asp:Button ID="btnConfirmaEliminar" Text="Eliminar" CssClass="btn btn-outline-danger" runat="server" OnClick="btnConfirmaEliminar_Click" />
