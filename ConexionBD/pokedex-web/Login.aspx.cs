@@ -18,39 +18,49 @@ namespace pokedex_web
 
         protected void btnIngresar_Click(object sender, EventArgs e)
         {
-            Usuario usuario;
-            UsuarioNegocio negocio = new UsuarioNegocio();
+            //Usuario usuario;
+            //UsuarioNegocio negocio = new UsuarioNegocio();
+
+            Trainee trainee = new Trainee();
+            TraineeNegocio negocio = new TraineeNegocio();
+
+            
 
             try
             {
-                usuario = new Usuario(txtUser.Text, txtPass.Text, false);
-
-                if (negocio.Loguear(usuario))
+                trainee.Email = txtUser.Text;
+                trainee.Pass = txtPass.Text;
+                if (negocio.Login(trainee))
                 {
-                    Session.Add("usuario", usuario);
-                    Response.Redirect("MenuLogin.aspx", false); //Ponemos false para que no tire una excepcion
+                    Session.Add("trainee", trainee); //Con esto sabemos si la persona esta logueada o no
+                    Response.Redirect("MiPerfil.aspx", false);
                 }
                 else
                 {
-                    Session.Add("error", "user o pass incorrecto");
+                    Session.Add("Error", "User o pass incorrectos");
                     Response.Redirect("Error.aspx", false);
                 }
-
+                
                 
             }
             catch (Exception ex)
             {
 
                 Session.Add("error", ex.ToString());
-                Response.Redirect("Error.aspx");
+                Response.Redirect("Error.aspx", false);
             }
             
         }
 
         protected void btnDesloguear_Click(object sender, EventArgs e)
         {
-            Session.Remove("usuario");
+            Session.Remove("trainee");
             Response.Redirect("Login.aspx");
+        }
+
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Default.aspx");
         }
     }
 }

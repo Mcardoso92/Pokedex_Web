@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <%if (Session["usuario"] == null)
+    <%if (Session["trainee"] == null)
         {%>
     <div class="col-md-6">
         <div class="mb-3">
@@ -14,6 +14,7 @@
             <asp:TextBox runat="server" ID="txtPass" placeholder="*****" CssClass="form-control" TextMode="Password" />
         </div>
         <asp:Button Text="Ingresar" ID="btnIngresar" OnClick="btnIngresar_Click" CssClass="btn btn-primary" runat="server" />
+        <asp:Button Text="Cancelar" ID="btnCancelar" OnClick="btnCancelar_Click" CssClass="btn btn-danger" runat="server" />
     </div>
     <%}
         else

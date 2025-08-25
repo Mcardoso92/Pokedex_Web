@@ -84,7 +84,7 @@ namespace pokedex_web
             {
 
                 Session.Add("Error", ex);
-                //redireccion a pantalla de error
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -113,7 +113,7 @@ namespace pokedex_web
             catch (Exception ex)
             {
                 Session.Add("Error", ex);
-                throw;
+                Response.Redirect("Error.aspx"); ;
             }
         }
 
@@ -148,7 +148,7 @@ namespace pokedex_web
             catch (Exception ex)
             {
                 Session.Add("Error", ex);
-                throw;
+                Response.Redirect("Error.aspx"); ;
             }
         }
 
@@ -172,6 +172,7 @@ namespace pokedex_web
             catch (Exception ex)
             {
                 Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
 
@@ -189,6 +190,7 @@ namespace pokedex_web
             {
 
                 Session.Add("error", ex);
+                Response.Redirect("Error.aspx");
             }
         }
     }
